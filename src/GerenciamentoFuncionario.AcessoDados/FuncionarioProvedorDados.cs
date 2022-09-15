@@ -60,7 +60,7 @@ namespace GerenciamentoFuncionario.AcessoDados
             _contexto.Funcionarios.Add(funcionario);
         }
 
-        private int GeradorDeId()
+        public int GeradorDeId()
         {
             var maiorId = _contexto.Funcionarios.Any() ? _contexto.Funcionarios.Max(x => x.Id) : 0;
             bool temId;
@@ -73,6 +73,11 @@ namespace GerenciamentoFuncionario.AcessoDados
 
             return maiorId;
         }
+
+        //public int RetornoId()
+        //{
+        //    return maiorId;
+        //}
 
         public IEnumerable<Funcionario> CarregaFuncionarios()
         {

@@ -13,21 +13,56 @@ namespace GerenciamentoFuncionario.Terminal
 
             var funcionarios = provedorFuncionario.CarregaFuncionarios();
 
-            Menu:
+        Menu:
             Console.WriteLine("--- Gerenciamento de Funcionários ---");
-            Console.Write("Escolha uma das opções CRIAR/EXCLUIR/ATUALIZAR/SAIR: ");
+            Console.WriteLine("------ Escolha uma das opções -------");
+            Console.WriteLine("1- CRIAR");
+            Console.WriteLine("2- EXCLUIR");
+            Console.WriteLine("3- ATUALIZAR");
+            Console.WriteLine("4- LISTAR");
+            Console.WriteLine("5- SAIR");
+            Console.Write("-> ");
             string opcaoEscolhida = Console.ReadLine();
 
             switch (opcaoEscolhida)
             {
-                case "CRIAR":
+                case "1":
+                    Console.WriteLine("\r\n");
                     Console.Write("Digite o nome completo do funcionário: ");
                     string nomeCompleto = Console.ReadLine();
 
-                    Console.Write("Digite o ID do cargo (1-Desenvolvedor 2-Engenheiro 3-Arquiteto 4-Gerente de Projetos): ");
+                Cargos:
+                    Console.WriteLine("");
+                    Console.WriteLine("Digite o ID do cargo");
+                    Console.WriteLine("1- Desenvolvedor");
+                    Console.WriteLine("2- Engenheiro");
+                    Console.WriteLine("3- Arquiteto");
+                    Console.WriteLine("4- Gerente de Projetos");
+                    Console.Write("-> ");
                     string idCargo = Console.ReadLine();
                     int IdCargo = int.Parse(idCargo);
-
+                    if (IdCargo == 1)
+                    {
+                        Console.WriteLine("Cargo validado: " + IdCargo + "- Desenvolvedor");
+                    }
+                    else if (IdCargo == 2)
+                    {
+                        Console.WriteLine("Cargo validado: " + IdCargo + "- Engenheiro");
+                    }
+                    else if (IdCargo == 3)
+                    {
+                        Console.WriteLine("Cargo validado: " + IdCargo + "- Arquiteto");
+                    }
+                    else if (IdCargo == 4)
+                    {
+                        Console.WriteLine("Cargo validado: " + IdCargo + "- Gerente de Projetos");
+                    }
+                    else
+                    {
+                        Console.WriteLine("** Opção inválida, tente novamente! **");
+                        goto Cargos;
+                    }
+                    Console.WriteLine("");
                     Console.Write("É bebedor de café? (S/N): ");
                     string bebeCafe = Console.ReadLine();
                     bool BebeCafe;
@@ -42,17 +77,47 @@ namespace GerenciamentoFuncionario.Terminal
                         BebeCafe = false;
                     }
 
-                    
+
                     provedorFuncionario.SalvaFuncionario(new Funcionario(nomeCompleto, IdCargo, BebeCafe));
 
+                    Console.WriteLine("\n");
                     Console.WriteLine("--- Dados do funcionário ---");
-                    Console.WriteLine("Id: ");
+                    //Console.WriteLine("Id: " + provedorFuncionario.RetornoId());
                     Console.WriteLine("Nome completo: " + nomeCompleto);
-                    Console.WriteLine("Cargo: " + IdCargo);
-                    Console.WriteLine("Bebe café?: " + BebeCafe);
+                    if (IdCargo == 1)
+                    {
+                        Console.WriteLine("Cargo: " + IdCargo + "- Desenvolvedor");
+                    }
+                    else if (IdCargo == 2)
+                    {
+                        Console.WriteLine("Cargo: " + IdCargo + "- Engenheiro");
+                    }
+                    else if (IdCargo == 3)
+                    {
+                        Console.WriteLine("Cargo: " + IdCargo + "- Arquiteto");
+                    }
+                    else if (IdCargo == 4)
+                    {
+                        Console.WriteLine("Cargo: " + IdCargo + "- Gerente de Projetos");
+                    }
+
+                    if (BebeCafe == false)
+                    {
+                        Console.WriteLine("Bebe café?: Não");
+                    }
+                    else if (BebeCafe == true)
+                    {
+                        Console.WriteLine("Bebe café?: Sim");
+                    }
+                    Console.WriteLine("----------------------------");
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
+                    Console.ReadKey();
+                    Console.Clear();
+                    goto Menu;
                     break;
 
-                case "EXCLUIR":
+                case "2":
                     Console.Write("Digite o Id do funcionário: ");
                     string idExclui = Console.ReadLine();
                     int IdExclui = int.Parse(idExclui);
@@ -60,12 +125,12 @@ namespace GerenciamentoFuncionario.Terminal
                     provedorFuncionario.ExcluiFuncionarioPorId(IdExclui);
                     break;
 
-                case "ATUALIZAR":
+                case "3":
                     Console.Write("Digite o ID do funcionário: ");
                     string idSelecionado = Console.ReadLine();
                     int IdSelecionado = int.Parse(idSelecionado);
                     var _funcionarioSelecionado = provedorFuncionario.RecuperaFuncionarioPorId(IdSelecionado);
-                    Alteracoes:
+                Alteracoes:
                     Console.Write("Qual informação deseja alterar? NOME/CARGO/CAFE: ");
                     string opcaoEscolhidaAtualiza = Console.ReadLine();
                     switch (opcaoEscolhidaAtualiza)
@@ -93,7 +158,7 @@ namespace GerenciamentoFuncionario.Terminal
                             else
                             { _funcionarioSelecionado.NaoEBebedorDeCafe(); }
                             break;
-                            
+
                         default:
                             break;
                     }
@@ -112,10 +177,20 @@ namespace GerenciamentoFuncionario.Terminal
                     }
                     else
                     { goto Menu; }
+                    break;
 
+                case "4":
+                    ApresentaFuncionarios(funcionarios);
                     break;
+
+                case "5":
+                    Environment.Exit(0);
+                    break;
+
                 default:
-                    break;
+                    Console.WriteLine("** Opção inválida, tente novamente! **");
+                    Console.WriteLine("\n");
+                    goto Menu;
             }
 
 
@@ -134,9 +209,10 @@ namespace GerenciamentoFuncionario.Terminal
         {
             foreach (var funcionario in funcionarios)
             {
+                Console.WriteLine("");
                 Console.WriteLine($"{funcionario.Id} {funcionario.NomeCompleto}");
                 Console.WriteLine("----------------------------------------------");
-                Console.WriteLine("\n\n");
+                Console.WriteLine("");
             }
 
             Console.ReadKey();

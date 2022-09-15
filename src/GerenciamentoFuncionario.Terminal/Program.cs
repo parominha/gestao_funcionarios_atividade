@@ -15,7 +15,7 @@ namespace GerenciamentoFuncionario.Terminal
 
             Menu:
             Console.WriteLine("--- Gerenciamento de Funcionários ---");
-            Console.WriteLine("Escolha uma das opções CRIAR/EXCLUIR/ATUALIZAR/SAIR: ");
+            Console.Write("Escolha uma das opções CRIAR/EXCLUIR/ATUALIZAR/SAIR: ");
             string opcaoEscolhida = Console.ReadLine();
 
             switch (opcaoEscolhida)
@@ -43,15 +43,17 @@ namespace GerenciamentoFuncionario.Terminal
                     }
 
                     
-                    provedorFuncionario.SalvaFuncionario(new Funcionario(Id, nomeCompleto, IdCargo, BebeCafe));
+                    provedorFuncionario.SalvaFuncionario(new Funcionario(nomeCompleto, IdCargo, BebeCafe));
 
-                    //provedorFuncionario.SalvaFuncionario(new Funcionario("Fulano de Tal", 1, false));
-                    //provedorFuncionario.SalvaFuncionario(new Funcionario("Ciclano de Tal", 2, true));
-                    //provedorFuncionario.SalvaFuncionario(new Funcionario("Beltrano de Tal", 3, true));
+                    Console.WriteLine("--- Dados do funcionário ---");
+                    Console.WriteLine("Id: ");
+                    Console.WriteLine("Nome completo: " + nomeCompleto);
+                    Console.WriteLine("Cargo: " + IdCargo);
+                    Console.WriteLine("Bebe café?: " + BebeCafe);
                     break;
 
                 case "EXCLUIR":
-                    Console.Write("Digite o ID do funcionário: ");
+                    Console.Write("Digite o Id do funcionário: ");
                     string idExclui = Console.ReadLine();
                     int IdExclui = int.Parse(idExclui);
                     //Console.Write("Confirma exclusão do funcionário ");

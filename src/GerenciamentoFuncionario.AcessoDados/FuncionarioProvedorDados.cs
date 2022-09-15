@@ -62,15 +62,7 @@ namespace GerenciamentoFuncionario.AcessoDados
 
         private int GeradorDeId()
         {
-            var maiorId = _contexto.Funcionarios.Max(x => x.Id);
-            //var temId = true;
-
-            //while (temId)
-            //{
-            //    maiorId++;
-            //    temId = _contexto.Funcionarios.Any(x => x.Id.Equals(maiorId));
-            //}
-
+            var maiorId = _contexto.Funcionarios.Any() ? _contexto.Funcionarios.Max(x => x.Id) : 0;
             bool temId;
             do
             {
@@ -79,7 +71,7 @@ namespace GerenciamentoFuncionario.AcessoDados
                 //temId = _contexto.Funcionarios.Any(x => x.Id == maiorId);
             } while (temId);
 
-            return maiorId;            
+            return maiorId;
         }
 
         public IEnumerable<Funcionario> CarregaFuncionarios()

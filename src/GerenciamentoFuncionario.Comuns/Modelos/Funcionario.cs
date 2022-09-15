@@ -6,10 +6,9 @@ namespace GerenciamentoFuncionario.Comuns.Modelos
     public class Funcionario : EntidadeBase
     {
 
-        public Funcionario(int id, string nomeCompleto, int cargoId,
+        public Funcionario(string nomeCompleto, int cargoId,
             bool eBebedorCafe = false)
         {
-            Id = id;
             NomeCompleto = nomeCompleto;
             CargoId = cargoId;
             EBebedorCafe = eBebedorCafe;

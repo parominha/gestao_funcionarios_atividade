@@ -22,9 +22,9 @@ namespace GerenciamentoFuncionario.AcessoDados
             new Cargo(4, "Gerente de Projetos")
             };
         }
-            public List<Cargo> Cargos { get; set; }
+        public List<Cargo> Cargos { get; set; } = new List<Cargo>();
 
-            public List<Funcionario> Funcionarios { get; set; }
+        public List<Funcionario> Funcionarios { get; set; } = new List<Funcionario>();
     }
 }
 

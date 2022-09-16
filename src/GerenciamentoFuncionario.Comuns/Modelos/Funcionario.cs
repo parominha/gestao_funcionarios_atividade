@@ -35,7 +35,8 @@ namespace GerenciamentoFuncionario.Comuns.Modelos
         public string UltimoNome { get; protected set; }
         public DateTimeOffset DataEntrada { get; protected set; }
 
-        public void SetCargoId(int cargoId) {
+        public void SetCargoId(int cargoId)
+        {
             if (cargoId < 1)
                 throw new Exception("Cargo inválido");
             CargoId = cargoId;
@@ -43,6 +44,6 @@ namespace GerenciamentoFuncionario.Comuns.Modelos
         public void SetBebedorCafe(bool eBebedorDeCafe) => EBebedorCafe = eBebedorDeCafe;
         public void EBebedorDeCafe() => EBebedorCafe = true;
         public void NaoEBebedorDeCafe() => EBebedorCafe = false;
-        
+
     }
 }

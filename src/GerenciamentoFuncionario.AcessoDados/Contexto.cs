@@ -9,12 +9,11 @@ namespace GerenciamentoFuncionario.AcessoDados
     {
         public Contexto()
         {
+            var desserealizar = new Desserealizador().DessJson();
 
-            //Funcionarios = new List<Funcionario> {
-            //new Funcionario(1, "Fulano de Tal", 1, false),
-            //new Funcionario(2, "Ciclano de Tal", 2, true),
-            //new Funcionario(3, "Beltrano de Tal", 3, true)
-            //};
+            Funcionarios = new List<Funcionario> {
+            new Funcionario(desserealizar.NomeCompleto, desserealizar.CargoId, desserealizar.EBebedorCafe),
+            };
 
             Cargos = new List<Cargo> {
             new Cargo(1, "Desenvolvedor"),

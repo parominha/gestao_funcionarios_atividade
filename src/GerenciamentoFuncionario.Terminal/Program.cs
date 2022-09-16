@@ -128,7 +128,7 @@ namespace GerenciamentoFuncionario.Terminal
                         string filePath = @"C:\temp\funcionarios.json";
                         var ObjetoDados = JsonConvert.SerializeObject(funcionarioAdicionado);
                         await File.WriteAllTextAsync(filePath, ObjetoDados);
-                        Console.WriteLine("Dados Salvos com Sucesso !!!");
+                        Console.WriteLine("Dados salvos com sucesso!");
                         Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
                         Console.ReadKey();
                         Console.Clear();
@@ -148,6 +148,8 @@ namespace GerenciamentoFuncionario.Terminal
                         Console.Clear();
                         goto Menu;
                     }
+
+
                     break;
 
                 case "2":

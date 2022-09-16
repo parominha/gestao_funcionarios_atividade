@@ -52,12 +52,13 @@ namespace GerenciamentoFuncionario.AcessoDados
             //return _contexto.Funcionarios.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public void SalvaFuncionario(Funcionario funcionario)
+        public Funcionario SalvaFuncionario(Funcionario funcionario)
         {
             //Debug.WriteLine($"Funcionário salvo: {funcionario.PrimeiroNome}");
             var id = GeradorDeId();
             funcionario.Id = id;
             _contexto.Funcionarios.Add(funcionario);
+            return funcionario;
         }
 
         public int GeradorDeId()

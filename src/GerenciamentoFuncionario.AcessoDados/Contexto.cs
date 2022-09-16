@@ -9,6 +9,7 @@ namespace GerenciamentoFuncionario.AcessoDados
     {
         public Contexto()
         {
+
             //Funcionarios = new List<Funcionario> {
             //new Funcionario(1, "Fulano de Tal", 1, false),
             //new Funcionario(2, "Ciclano de Tal", 2, true),

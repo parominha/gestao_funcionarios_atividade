@@ -5,10 +5,15 @@ namespace GerenciamentoFuncionario.Comuns.Modelos
 {
     public class Funcionario : EntidadeBase
     {
+        public Funcionario()
+        {
 
-        public Funcionario(string nomeCompleto, int cargoId,
+        }
+
+        public Funcionario(int id, string nomeCompleto, int cargoId,
             bool eBebedorCafe = false)
         {
+            Id = id;
             NomeCompleto = nomeCompleto;
             CargoId = cargoId;
             EBebedorCafe = eBebedorCafe;
@@ -35,15 +40,18 @@ namespace GerenciamentoFuncionario.Comuns.Modelos
         public string UltimoNome { get; protected set; }
         public DateTimeOffset DataEntrada { get; protected set; }
 
+        public void NaoEBebedorDeCafe()
+        {
+            EBebedorCafe = false;
+        }
+
         public void SetCargoId(int cargoId)
         {
-            if (cargoId < 1)
-                throw new Exception("Cargo inválido");
+            if (cargoId <= 0)
+                throw new Exception("Cargo Inválido");
+
             CargoId = cargoId;
         }
-        public void SetBebedorCafe(bool eBebedorDeCafe) => EBebedorCafe = eBebedorDeCafe;
-        public void EBebedorDeCafe() => EBebedorCafe = true;
-        public void NaoEBebedorDeCafe() => EBebedorCafe = false;
-
     }
 }
+

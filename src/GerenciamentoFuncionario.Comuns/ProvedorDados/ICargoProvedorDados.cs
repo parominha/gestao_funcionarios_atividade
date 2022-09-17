@@ -1,7 +1,6 @@
-﻿using GerenciamentoFuncionario.Comuns.Modelos;
-using System;
+﻿
+using GerenciamentoFuncionario.Comuns.Modelos;
 using System.Collections.Generic;
-using System.Text;
 
 namespace GerenciamentoFuncionario.Comuns.ProvedorDados
 {
@@ -9,7 +8,7 @@ namespace GerenciamentoFuncionario.Comuns.ProvedorDados
     {
         IEnumerable<Cargo> CarregaCargos();
         Cargo RecuperaCargoPorId(int id);
-        void SalvaCargo(Cargo cargo);
+        void SalvaCargo(string nomeCargo);
         void AtualizaCargo(Cargo cargo);
         void ExcluiCargo(Cargo cargo);
     }

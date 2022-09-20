@@ -61,7 +61,6 @@ namespace GerenciamentoFuncionario.AcessoDados
             {
                 maiorId++;
                 temId = _contexto.Cargos.Any(x => x.Id.Equals(maiorId));
-                //temId = _contexto.Funcionarios.Any(x => x.Id == maiorId);
             } while (temId);
 
             return maiorId;

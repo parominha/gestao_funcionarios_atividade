@@ -30,13 +30,14 @@ namespace GerenciamentoFuncionario.Terminal
 
             if (opcaoEscolhidaMenu == "1")
             {
+                MenuFuncionario:
                 Console.WriteLine("--- Gerenciamento de Funcionários ---");
                 Console.WriteLine("------ Escolha uma das opções -------");
                 Console.WriteLine("1- CRIAR");
                 Console.WriteLine("2- EXCLUIR");
                 Console.WriteLine("3- ATUALIZAR");
                 Console.WriteLine("4- LISTAR");
-                Console.WriteLine("5- SAIR");
+                Console.WriteLine("5- VOLTAR");
                 Console.Write("-> ");
                 string opcaoEscolhidaFuncionario = Console.ReadLine();
 
@@ -48,7 +49,8 @@ namespace GerenciamentoFuncionario.Terminal
                         string nomeCompleto = Console.ReadLine();
 
                         Console.WriteLine("");
-                        Console.WriteLine("Digite o ID do cargo");
+                        Console.WriteLine("Digite o ID do cargo:");
+                        ApresentaCargosMenu(cargos);
                         Console.Write("-> ");
                         string idCargo = Console.ReadLine();
                         int IdCargo = int.Parse(idCargo);
@@ -81,23 +83,6 @@ namespace GerenciamentoFuncionario.Terminal
                         Console.WriteLine("Nome completo: " + funcionarioCriado.NomeCompleto);
 
                         Console.WriteLine("Cargo: " + funcionarioCriado.CargoId);
-
-                        //if (IdCargo == 1)
-                        //{
-                        //    Console.WriteLine("Cargo: " + IdCargo + "- Desenvolvedor");
-                        //}
-                        //else if (IdCargo == 2)
-                        //{
-                        //    Console.WriteLine("Cargo: " + IdCargo + "- Engenheiro");
-                        //}
-                        //else if (IdCargo == 3)
-                        //{
-                        //    Console.WriteLine("Cargo: " + IdCargo + "- Arquiteto");
-                        //}
-                        //else if (IdCargo == 4)
-                        //{
-                        //    Console.WriteLine("Cargo: " + IdCargo + "- Gerente de Projetos");
-                        //}
 
                         if (BebeCafe == false)
                         {
@@ -181,6 +166,7 @@ namespace GerenciamentoFuncionario.Terminal
                             case "2":
                                 Console.WriteLine("");
                                 Console.WriteLine("Digite o ID do cargo");
+                                ApresentaCargosMenu(cargos);
                                 Console.Write("-> ");
                                 string cargoAtualizado = Console.ReadLine();
                                 int CargoAtualizado = int.Parse(cargoAtualizado);
@@ -227,11 +213,15 @@ namespace GerenciamentoFuncionario.Terminal
                         Console.Write("Deseja alterar mais alguma informação? (S/N): ");
                         string alterarMais = Console.ReadLine();
                         if (alterarMais.ToUpper() == "S")
-                        {
+                        {   
                             goto AlteracoesFunc;
                         }
                         else if (alterarMais.ToUpper() == "N")
                         {
+                            Console.WriteLine("\n");
+                            Console.WriteLine("Pressione qualquer tecla para voltar ao menu");
+                            Console.ReadKey();
+                            Console.Clear();
                             goto Menu;
                         }
                         else
@@ -242,6 +232,8 @@ namespace GerenciamentoFuncionario.Terminal
 
                     case "4":
                         Console.WriteLine("");
+                        Console.WriteLine("!! OBS: se o funcionario não constar na lista abaixo, reinicie o programa para atualizá-la !!");
+                        Console.WriteLine("");
                         Console.WriteLine("---- Funcionarios cadastrados ----");
                         ApresentaFuncionarios(funcionarios);
                         Console.WriteLine("\n");
@@ -251,25 +243,26 @@ namespace GerenciamentoFuncionario.Terminal
                         goto Menu;
 
                     case "5":
-                        Environment.Exit(0);
-                        break;
+                        Console.Clear();
+                        goto Menu;
 
                     default:
                         Console.WriteLine("** Opção inválida, tente novamente! **");
                         Console.WriteLine("\n");
-                        goto Menu;
+                        goto MenuFuncionario;
                 }
             }
 
             else if (opcaoEscolhidaMenu == "2")
             {
+                MenuCargos:
                 Console.WriteLine("------ Gerenciamento de Cargos ------");
                 Console.WriteLine("------ Escolha uma das opções -------");
                 Console.WriteLine("1- CRIAR");
                 Console.WriteLine("2- EXCLUIR");
                 Console.WriteLine("3- ATUALIZAR");
                 Console.WriteLine("4- LISTAR");
-                Console.WriteLine("5- SAIR");
+                Console.WriteLine("5- VOLTAR");
                 Console.Write("-> ");
                 string opcaoEscolhidaCargos = Console.ReadLine();
 
@@ -355,6 +348,8 @@ namespace GerenciamentoFuncionario.Terminal
 
                     case "4":
                         Console.WriteLine("");
+                        Console.WriteLine("!! OBS: se o cargo não constar na lista abaixo, reinicie o programa para atualizá-la !!");
+                        Console.WriteLine("");
                         Console.WriteLine("---- Cargos cadastrados ----");
                         ApresentaCargos(cargos);
                         Console.WriteLine("\n");
@@ -364,8 +359,13 @@ namespace GerenciamentoFuncionario.Terminal
                         goto Menu;
 
                     case "5":
-                        Environment.Exit(0);
-                        break;
+                        Console.Clear();
+                        goto Menu;
+
+                    default:
+                        Console.WriteLine("** Opção inválida, tente novamente! **");
+                        Console.WriteLine("\n");
+                        goto MenuCargos;
                 }
 
             }
@@ -390,7 +390,6 @@ namespace GerenciamentoFuncionario.Terminal
                 Console.WriteLine("");
                 Console.WriteLine("Id: " + funcionario.Id);
                 Console.WriteLine("Nome: " + funcionario.NomeCompleto);
-                Console.WriteLine("----------------------------------------------");
                 Console.WriteLine("");
             }
         }
@@ -402,8 +401,15 @@ namespace GerenciamentoFuncionario.Terminal
                 Console.WriteLine("");
                 Console.WriteLine("Id: " + cargo.Id);
                 Console.WriteLine("Cargo: " + cargo.CargoNome);
-                Console.WriteLine("----------------------------------------------");
                 Console.WriteLine("");
+            }
+        }
+
+        private static void ApresentaCargosMenu(IEnumerable<Comuns.Modelos.Cargo> cargos)
+        {
+            foreach (var cargo in cargos)
+            {
+                Console.WriteLine("Id: " + cargo.Id + " - Cargo: " + cargo.CargoNome);
             }
         }
     }

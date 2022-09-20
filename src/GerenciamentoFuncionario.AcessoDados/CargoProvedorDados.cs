@@ -19,15 +19,8 @@ namespace GerenciamentoFuncionario.AcessoDados
         {
             var listaCargosAtualizada = _contexto.Cargos;
 
-            listaCargosAtualizada.ForEach(x =>
-            {
-                if (x.Id.Equals(cargo.Id))
-                {
-                    x = cargo;
-                    return;
-                }
-            });
-
+            listaCargosAtualizada.Remove(listaCargosAtualizada?.FirstOrDefault(x => x.Id.Equals(cargo?.Id)));
+            listaCargosAtualizada.Add(cargo);
             _contexto.Cargos = listaCargosAtualizada;
         }
 
@@ -36,7 +29,7 @@ namespace GerenciamentoFuncionario.AcessoDados
         public void ExcluiCargo(Cargo cargo)
         {
             var listaComCargoExcluido = _contexto.Cargos;
-            listaComCargoExcluido.Remove(cargo);
+            listaComCargoExcluido.Remove(listaComCargoExcluido?.FirstOrDefault(x => x.Id.Equals(cargo?.Id)));
             _contexto.Cargos = listaComCargoExcluido;
         }
 
@@ -50,13 +43,14 @@ namespace GerenciamentoFuncionario.AcessoDados
             return _contexto.Cargos.Find(x => x.CargoNome.Equals(nomeCargo));
         }
 
-        public void SalvaCargo(string nomeCargo)
+        public Cargo SalvaCargo(string nomeCargo)
         {
             var listaCargoNovo = _contexto.Cargos;
             var novoCargo = new Cargo(GeradorDeId(), nomeCargo);
             listaCargoNovo.Add(novoCargo);
             _contexto.Cargos = listaCargoNovo;
             Debug.WriteLine($"Cargo salvo: {novoCargo.CargoNome}");
+            return novoCargo;
         }
 
         private int GeradorDeId()

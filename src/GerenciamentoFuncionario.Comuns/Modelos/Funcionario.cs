@@ -45,6 +45,11 @@ namespace GerenciamentoFuncionario.Comuns.Modelos
             EBebedorCafe = false;
         }
 
+        public void EBebedorDeCafe()
+        {
+            EBebedorCafe = true;
+        }
+
         public void SetCargoId(int cargoId)
         {
             if (cargoId <= 0)

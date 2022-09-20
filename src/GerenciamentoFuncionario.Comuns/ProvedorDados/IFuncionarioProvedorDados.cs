@@ -9,7 +9,7 @@ namespace GerenciamentoFuncionario.Comuns.ProvedorDados
         Funcionario RecuperaFuncionarioPorId(int id);
         void AtualizaFuncionario(Funcionario funcionario);
         void ExcluiFuncionario(Funcionario funcionario);
-        void SalvaFuncionario(string nomeCompleto, int cargoId, bool eBebedorCafe);
+        Funcionario SalvaFuncionario(string nomeCompleto, int cargoId, bool eBebedorCafe);
     }
 }
 

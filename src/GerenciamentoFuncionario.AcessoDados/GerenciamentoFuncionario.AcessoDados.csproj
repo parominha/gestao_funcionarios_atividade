@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GerenciamentoFuncionario.Comuns\GerenciamentoFuncionario.Comuns.csproj" />
+    <ProjectReference Include="..\GerenciamentoFuncionario.Infra.Json\GerenciamentoFuncionario.Infra.Json.csproj" />
   </ItemGroup>
 
 </Project>

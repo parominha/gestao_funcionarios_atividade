@@ -8,7 +8,7 @@ namespace GerenciamentoFuncionario.Comuns.ProvedorDados
     {
         IEnumerable<Cargo> CarregaCargos();
         Cargo RecuperaCargoPorId(int id);
-        void SalvaCargo(string nomeCargo);
+        Cargo SalvaCargo(string nomeCargo);
         void AtualizaCargo(Cargo cargo);
         void ExcluiCargo(Cargo cargo);
     }

@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinUI", "WinUI", "{92BEC873
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "GerenciamentoFuncionario.WinUI (Package)", "src\GerenciamentoFuncionario.WinUI\GerenciamentoFuncionario.WinUI (Package)\GerenciamentoFuncionario.WinUI (Package).wapproj", "{56890A6E-393E-4939-9C69-7DCE2BA912EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciamentoFuncionario.WinUI", "src\GerenciamentoFuncionario.WinUI\GerenciamentoFuncionario.WinUI\GerenciamentoFuncionario.WinUI.csproj", "{87859142-16FC-40B8-AD9E-E114CC40E1F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciamentoFuncionario.WinUI", "src\GerenciamentoFuncionario.WinUI\GerenciamentoFuncionario.WinUI\GerenciamentoFuncionario.WinUI.csproj", "{87859142-16FC-40B8-AD9E-E114CC40E1F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
